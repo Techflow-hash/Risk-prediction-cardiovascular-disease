@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add these new style elements after Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .prediction-result {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .prediction-result:hover {
+            transform: translateY(-5px);
+        }
+        .result-high {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        .result-low {
+            color: #28a745;
+            font-weight: 600;
+        }
+        .confidence-bar {
+            height: 10px;
+            border-radius: 5px;
+            background: #e9ecef;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .confidence-level {
+            height: 100%;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            transition: width 0.8s ease;
+        }
+        .parameter-list {
+            list-style: none;
+            padding: 0;
+        }
+        .parameter-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .parameter-list li i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+        <style>
+            /* Add these to your existing styles */
+            .result-high, .result-low {
+                padding: 15px;
+                border-radius: 8px;
+                margin-top: 15px;
+            }
+            .result-high {
+                background-color: rgba(220, 53, 69, 0.1);
+            }
+            .result-low {
+                background-color: rgba(40, 167, 69, 0.1);
+            }
+            .confidence-bar {
+                height: 12px;
+                background-color: #e9ecef;
+                border-radius: 6px;
+                overflow: hidden;
+                margin: 10px 0;
+            }
+            .confidence-level {
+                height: 100%;
+                background: linear-gradient(90deg, #007bff, #0056b3);
+                transition: width 0.8s ease;
+            }
+        </style>
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/userhome">Dashboard</a>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="/load">Load Data</a>
+            <a class="nav-item nav-link" href="/view">View Data</a>
+            <a class="nav-item nav-link active" href="/prediction">Prediction</a>
+            <a class="nav-item nav-link" href="/logout">Logout</a>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header">Enter Health Details</div>
+                    <div class="card-body">
+                        <form method="POST" action="/prediction">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Age:</label>
+                                        <input type="number" class="form-control" name="age" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sex (0=female, 1=male):</label>
+                                        <input type="number" class="form-control" name="sex" min="0" max="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Chest Pain Type (0-3):</label>
+                                        <input type="number" class="form-control" name="cp" min="0" max="3" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Resting Blood Pressure:</label>
+                                        <input type="number" class="form-control" name="trestbps" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cholesterol:</label>
+                                        <input type="number" class="form-control" name="chol" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fasting Blood Sugar (0=false, 1=true):</label>
+                                        <input type="number" class="form-control" name="fbs" min="0" max="1" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Resting ECG (0-2):</label>
+                                        <input type="number" class="form-control" name="restecg" min="0" max="2" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Max Heart Rate:</label>
+                                        <input type="number" class="form-control" name="thalach" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Exercise Induced Angina (0=no, 1=yes):</label>
+                                        <input type="number" class="form-control" name="exang" min="0" max="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ST Depression:</label>
+                                        <input type="number" step="0.1" class="form-control" name="oldpeak" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slope (0-2):</label>
+                                        <input type="number" class="form-control" name="slope" min="0" max="2" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Number of Major Vessels (0-3):</label>
+                                        <input type="number" class="form-control" name="ca" min="0" max="3" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Thal (0-3):</label>
+                                        <input type="number" class="form-control" name="thal" min="0" max="3" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Predict</button>
+                        </form>
+                        <!-- Add this section after the form, inside the card-body div -->
+                        <!-- Replace the existing prediction result section -->
+                        {% if msg %}
+                        <div class="prediction-result mt-4">
+                            <h4><i class="fas fa-heartbeat mr-2"></i>Prediction Result</h4>
+                            
+                            {% if msg %}
+                                {% if 'High risk' in msg %}
+                                <div class="result-high p-3 rounded">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>{{ msg.split('\n')[0] }}
+                                </div>
+                                {% else %}
+                                <div class="result-low p-3 rounded">
+                                    <i class="fas fa-check-circle mr-2"></i>{{ msg.split('\n')[0] }}
+                                </div>
+                                {% endif %}
+                                
+                                <div class="mt-4">
+                                    <h5>Confidence Level</h5>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-level" style="width: {{ msg.split('\n')[1].split(':')[1].strip() }}"></div>
+                                    </div>
+                                    <p class="text-muted mt-2">{{ msg.split('\n')[1] }}</p>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h5><i class="fas fa-clipboard-list mr-2"></i>Entered Parameters</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="parameter-list">
+                                                <li><i class="fas fa-user"></i>Age: {{ request.form.get('age', '') }} years</li>
+                                                <li><i class="fas fa-venus-mars"></i>Gender: {{ 'Male' if request.form.get('sex') == '1' else 'Female' }}</li>
+                                                <li><i class="fas fa-heart"></i>Blood Pressure: {{ request.form.get('trestbps', '') }} mm Hg</li>
+                                                <li><i class="fas fa-tint"></i>Cholesterol: {{ request.form.get('chol', '') }} mg/dl</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="parameter-list">
+                                                <li><i class="fas fa-heartbeat"></i>Max Heart Rate: {{ request.form.get('thalach', '') }} bpm</li>
+                                                <li><i class="fas fa-notes-medical"></i>Chest Pain Type: {{ request.form.get('cp', '') }}</li>
+                                                <li><i class="fas fa-chart-line"></i>ST Depression: {{ request.form.get('oldpeak', '') }}</li>
+                                                <li><i class="fas fa-hospital"></i>Major Vessels: {{ request.form.get('ca', '') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

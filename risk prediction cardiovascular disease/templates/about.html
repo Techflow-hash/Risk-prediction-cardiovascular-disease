@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - Heart Disease Prediction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <head>
+        <!-- Add these new links -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                line-height: 1.6;
+            }
+            
+            .feature-card {
+                border-left: 4px solid #007bff;
+                margin-bottom: 30px;
+                padding: 25px;
+                background-color: #f8f9fa;
+                transition: all 0.3s ease;
+                border-radius: 10px;
+            }
+            
+            .feature-card:hover {
+                transform: translateX(10px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .section-title {
+                font-family: 'Roboto', sans-serif;
+                color: #2c3e50;
+                border-bottom: 3px solid #007bff;
+                padding-bottom: 15px;
+                margin-bottom: 30px;
+                font-size: 2.5rem;
+                font-weight: 700;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            }
+            
+            .highlight-text {
+                color: #e74c3c;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+            
+            .info-box {
+                background-color: #ffffff;
+                border-radius: 15px;
+                padding: 30px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                margin-bottom: 30px;
+                transition: transform 0.3s ease;
+            }
+            
+            .info-box:hover {
+                transform: translateY(-5px);
+            }
+            
+            h4 {
+                font-family: 'Roboto', sans-serif;
+                color: #2c3e50;
+                font-weight: 600;
+                margin-bottom: 20px;
+                font-size: 1.5rem;
+            }
+            
+            .list-group-item {
+                font-size: 1.1rem;
+                padding: 15px 20px;
+                border-left: 3px solid #007bff;
+                margin-bottom: 5px;
+                background-color: #f8f9fa;
+            }
+            
+            .stat-card {
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .img-container {
+                border-radius: 15px;
+                overflow: hidden;
+                margin: 20px 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .img-container img {
+                width: 100%;
+                height: auto;
+                transition: transform 0.3s ease;
+            }
+            
+            .img-container:hover img {
+                transform: scale(1.05);
+            }
+            
+            .icon-box {
+                text-align: center;
+                padding: 20px;
+                margin: 10px 0;
+            }
+            
+            .icon-box i {
+                font-size: 3rem;
+                color: #007bff;
+                margin-bottom: 15px;
+            }
+            
+            @media (max-width: 768px) {
+                .section-title {
+                    font-size: 2rem;
+                }
+                .feature-card {
+                    padding: 15px;
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-light">
+        <!-- Existing nav remains the same -->
+        
+        <div class="container mt-5">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="section-title">About Heart Disease Prediction System</h2>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="img-container">
+                                <img src="https://www.heart.org/-/media/Images/Health-Topics/Heart-Attack/Heart-Attack-Symptoms-Man.jpg" alt="Heart Disease Awareness">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <h4><i class="fas fa-heartbeat mr-2"></i>What is Heart Disease?</h4>
+                                <p>Heart disease refers to various conditions that affect the heart and blood vessels. It remains one of the leading causes of death globally, with an estimated <span class="highlight-text">17.9 million lives</span> taken each year.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><i class="fas fa-microchip mr-2"></i>Our Prediction System</h4>
+                        <p>This advanced system utilizes state-of-the-art machine learning algorithms to predict the likelihood of heart disease based on various health parameters. The prediction accuracy is enhanced through multiple classification algorithms working in conjunction.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>Machine Learning Algorithms Used</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Decision Trees - For pattern recognition in medical data</li>
+                            <li class="list-group-item">Random Forest - Ensemble learning for improved accuracy</li>
+                            <li class="list-group-item">K-Nearest Neighbors (KNN) - Pattern matching with existing cases</li>
+                            <li class="list-group-item">AdaBoost - Adaptive boosting for better predictions</li>
+                            <li class="list-group-item">Gradient Boosting - Advanced technique for prediction refinement</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>Key Health Parameters Analyzed</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>Age and Gender</li>
+                                    <li>Blood Pressure Levels</li>
+                                    <li>Cholesterol Measurements</li>
+                                    <li>Blood Sugar Levels</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>Heart Rate Variations</li>
+                                    <li>ECG Results</li>
+                                    <li>Exercise Induced Angina</li>
+                                    <li>Number of Major Vessels</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <i class="fas fa-heart mb-3"></i>
+                                <h3>80%</h3>
+                                <p>Preventable Cases</p>
+                            </div>
+                        </div>
+                        <!-- Add 3 more stat cards -->
+                    </div>
+
+                    <div class="info-box mt-4">
+                        <h4>Why Use Our System?</h4>
+                        <ul>
+                            <li>High Prediction Accuracy</li>
+                            <li>Real-time Analysis</li>
+                            <li>User-friendly Interface</li>
+                            <li>Comprehensive Health Assessment</li>
+                            <li>Based on Medical Research Data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

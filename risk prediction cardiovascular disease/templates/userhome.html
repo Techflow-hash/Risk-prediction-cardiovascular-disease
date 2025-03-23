@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/userhome">Dashboard</a>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="/load">Load Data</a>
+            <a class="nav-item nav-link" href="/view">View Data</a>
+            <a class="nav-item nav-link" href="/prediction">Prediction</a>
+            <a class="nav-item nav-link" href="/logout">Logout</a>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1>Welcome to Your Dashboard</h1>
+            <p class="lead">Start by loading your data and make predictions</p>
+            {% if msg %}
+            <div class="alert alert-success">{{ msg }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Load Data</h5>
+                        <p class="card-text">Upload your CSV file for analysis</p>
+                        <a href="/load" class="btn btn-primary">Upload Data</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">View Data</h5>
+                        <p class="card-text">Examine your uploaded dataset</p>
+                        <a href="/view" class="btn btn-primary">View Data</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Make Prediction</h5>
+                        <p class="card-text">Run prediction models</p>
+                        <a href="/prediction" class="btn btn-primary">Predict</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

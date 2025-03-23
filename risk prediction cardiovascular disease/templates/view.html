@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/userhome">Dashboard</a>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="/load">Load Data</a>
+            <a class="nav-item nav-link active" href="/view">View Data</a>
+            <a class="nav-item nav-link" href="/prediction">Prediction</a>
+            <a class="nav-item nav-link" href="/logout">Logout</a>
+        </div>
+    </nav>
+    
+    <div class="container-fluid mt-5">
+        <div class="card shadow">
+            <div class="card-header">Dataset Preview</div>
+            <div class="card-body">
+                {% if msg %}
+                <div class="alert alert-info">{{ msg }}</div>
+                {% else %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                {% for col in col_name %}
+                                <th>{{ col }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in row_val %}
+                            <tr>
+                                {% for val in row %}
+                                <td>{{ val }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
